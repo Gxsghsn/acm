@@ -1,9 +1,13 @@
+3
+3
+Floor 3
+Floor 2
+Floor 3
 2
-3
-CC 10:00:00
-77 10:01:00
-CC 10:02:00
-3
-77 16:00:00
-77 16:00:02
-CC 16:01:00
+Ceiling 0
+Floor 0
+4
+Floor -3
+Ceiling -4
+Floor -3
+Ceiling -4

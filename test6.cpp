@@ -1,49 +1,44 @@
-#include<iomanip>
 #include<iostream>
+#include<memory.h>
 using namespace std;
+char cangku[2000000000];
+
 
 int main()
 {
-    cout.fill('0');
-    freopen("test6.in","r",stdin);
-    int testnum,mnum,casenum=0;
+    memset(cangku,1,sizeof(cangku));
+    freopen("test7.in","r",stdin);
+    int testnum,casenum=1;
     cin>>testnum;
     while(testnum>0)
     {
-        int time77=0,timecc=0,count77=0,countcc=0,timeprimer=0;
-        cin>>mnum;
-        while(mnum>0)
+        int n;
+        cin>>n;
+        cout<<"Case "<<casenum<<":\n";
+        casenum++;
+        while(n>0)
         {
-            string name;
-            int hh,mm,ss,usetime;
-            cin>>name>>hh;
-            getchar();
-            cin>>mm;
-            getchar();
-            cin>>ss;
-            if(name=="77")
+            string s;
+            int m;
+            cin>>s>>m;
+            m+=1000;
+            if(s=="Floor")
             {
-               count77++;
-               if(timeprimer!=0)
-                  time77+=(hh*3600+mm*60+ss)-timeprimer;
+                while(cangku[m]==0)
+                    m-=1;
+                cangku[m]=0;
+                cout<<m-1000<<endl;
             }
+//            if(s=="Ceiling")
             else
             {
-               countcc++;
-               if(timeprimer!=0)
-                  timecc+=(hh*3600+mm*60+ss)-timeprimer;
+                while(cangku[m]==0)
+                    m+=1;
+                cangku[m]=0;
+                cout<<m-1000<<endl;
             }
-            timeprimer=hh*3600+mm*60+ss;
-            mnum--;
+            n--;
         }
-        casenum++;
-        cout<<"Case "<<casenum<<":\n";
-        cout<<time77<<" "<<timecc<<" "<<count77<<" "<<countcc<<" ";
-        if((double)time77/timecc<=2&&(double)time77/timecc>=0.5)
-            cout<<"happy"<<endl;
-        else
-            cout<<"unhappy"<<endl;
-
         testnum--;
     }
     return 0;
