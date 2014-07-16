@@ -15,13 +15,6 @@ int findpath(unsigned char maze[10][10],int a,int b,int num0)
     {
         i-=1;
         num0--;
-//        if(num0==0)
-//        {
-////            path[pathnum]='^';
-////            pathnum++;
-//            return 1;
-//        }
-//        flag=findpath(maze,i,j,num0);
         if(num0==0||findpath(maze,i,j,num0))
         {
             maze[i+1][j]='^';
@@ -36,13 +29,6 @@ int findpath(unsigned char maze[10][10],int a,int b,int num0)
     {
         i+=1;
         num0--;
-//        if(num0==0)
-//        {
-//            path[pathnum]='|';
-//            pathnum++;
-//            return 1;
-//        }
-//        flag=findpath(maze,i,j,num0);
         if(num0==0||findpath(maze,i,j,num0))
         {
             maze[i-1][j]='|';
@@ -57,13 +43,6 @@ int findpath(unsigned char maze[10][10],int a,int b,int num0)
     {
         j-=1;
         num0--;
-//        if(num0==0)
-//        {
-////            path[pathnum]='<';
-////            pathnum++;
-//            return 1;
-//        }
-//        flag=findpath(maze,i,j,num0);
         if(num0==0||findpath(maze,i,j,num0))
         {
             maze[i][j+1]='<';
@@ -78,13 +57,6 @@ int findpath(unsigned char maze[10][10],int a,int b,int num0)
     {
         j+=1;
         num0--;
-//        if(num0==0)
-//        {
-////            path[pathnum]='>';
-////            pathnum++;
-//            return 1;
-//        }
-//        flag=findpath(maze,i,j,num0);
         if(num0==0||findpath(maze,i,j,num0))
         {
             maze[i][j-1]='>';
@@ -252,6 +224,6 @@ int main()
     }
     else
         cout<<"no path"<<endl;
-    // system("pause");
+    system("pause");
     return 0;
 }
