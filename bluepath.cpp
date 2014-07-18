@@ -131,25 +131,23 @@ int main()
     flag = findpath(maze,i1,j1,num0);
     if(flag==1)
     {
-//        for(int i=pathnum-1;i>=0;i--)
-//            cout<<path[i]<<" ";
-        for(int i=0;i<=9;i++)
-        {
-            for(int j=0;j<=9;j++)
-            {
-                if(maze[i][j]==1)
-                    cout<<"@ ";
-                else if(maze[i][j]==0)
-                    cout<<"* ";
-                else
-                {
-//                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),FOREGROUND_INTENSITY |
-//            FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-                    cout<<maze[i][j]<<" ";
-                }
-            }
-            cout<<endl;
-        }
+        for(int i=pathnum-1;i>=0;i--)
+            cout<<path[i]<<" ";
+//        for(int i=0;i<=9;i++)
+//        {
+//            for(int j=0;j<=9;j++)
+//            {
+//                if(maze[i][j]==1)
+//                    cout<<"@ ";
+//                else if(maze[i][j]==0)
+//                    cout<<"* ";
+//                else
+//                {
+//                    cout<<maze[i][j]<<" ";
+//                }
+//            }
+//            cout<<endl;
+//        }
 
     }
     else
