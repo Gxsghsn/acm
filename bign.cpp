@@ -20,13 +20,13 @@ struct bign
         return *this;
     }
 
-    bign operator = (bign& b)
-    {
-        len = b.len;
-        for(int i=0;i<len;i++)
-            s[i]=b.s[i];
-        return *this;
-    }
+//    bign operator = (bign& b)
+//    {
+//        len = b.len;
+//        for(int i=0;i<len;i++)
+//            s[i]=b.s[i];
+//        return *this;
+//    }
 
     bign operator = (const int num)
     {
@@ -37,6 +37,7 @@ struct bign
     }
 
     bign(int num){*this = num;}
+
     bign(const char* num){*this = num;}
 
     string str() const
@@ -66,9 +67,10 @@ struct bign
         return c;
     }
 
-    bign operator += (const bign& b) const              //+=
+    bign operator += (const bign& b)                  //+=
     {
-        return *this+b;
+        *this = *this +b;
+        return *this;
     }
 
     bign operator - (const bign& b)  const              //-
@@ -94,8 +96,29 @@ struct bign
 
     bign operator -= (const bign& b)                     //-=
     {
-//        *this = *this - b;
-        return *this - b;
+        *this = *this - b;
+        return *this;
+    }
+
+    bign operator * (const int& b) const                 //*
+    {
+        bign c;
+        int n=0;
+        c.len=0;
+        for(int i=0;i<len||n>=1;i++)
+        {
+            n+=s[i]*b;
+            c.s[i]=n%10;
+            c.len++;
+            n/=10;
+        }
+        return c;
+    }
+
+    bign operator *= (const int b)                         //*=
+    {
+        *this = *this * b;
+        return *this;
     }
 
     bool operator > (const bign b) const                 //>
@@ -112,7 +135,7 @@ struct bign
         return !(b>*this);
     }
 
-    bool operator < (const bign b) const                  //<
+    bool operator < (const bign b) const                 //<
     {
         return b>*this;
     }
@@ -133,7 +156,6 @@ struct bign
     }
 };
 
-
 istream& operator >> (istream &in, bign& x)
 {
     string s;
@@ -142,22 +164,20 @@ istream& operator >> (istream &in, bign& x)
     return in;
 }
 
-
 ostream& operator <<(ostream &out, const bign& x)
 {
     out<<x.str();
     return out;
 }
 
-
-
-
 int main()
 {
     bign x = 50;
     bign y = 40;
-    bign z=x;
+    y *= 5;
     cout<<z<<endl;
+    cout<<y*5<<endl;
+    cout<<y<<endl;
     cout<<(x==y)<<endl;
 
     return 0;
