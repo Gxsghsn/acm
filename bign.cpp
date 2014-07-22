@@ -172,10 +172,10 @@ ostream& operator <<(ostream &out, const bign& x)
 
 int main()
 {
-    bign x = 50;
+    bign x(50);
     bign y = 40;
     y *= 5;
-    cout<<z<<endl;
+    cout<<x<<endl;
     cout<<y*5<<endl;
     cout<<y<<endl;
     cout<<(x==y)<<endl;
