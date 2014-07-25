@@ -6,7 +6,7 @@ int main()
 {
     int i=0,flag=0,sflag=0,locat=-1;
     string s[20],after,before,compare;
-    cin>>before;
+    before="baababbbaabbbbaa";
     int length = before.length();
     for(i=0;i<length;i++)     // in before
     {
