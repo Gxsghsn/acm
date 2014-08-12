@@ -8,7 +8,7 @@ void dictionary_print(int n,string A,int cur,string B)
         cout<<endl;
     }
     else for(int j=0;j<n;j++)
-        if(!j||A[j]!=A[j-1]){
+        if(!j||B[j]!=B [j-1]){
         int ok=1;
         int c1=0,c2=0;
         for(int i=0;i<cur;i++){
