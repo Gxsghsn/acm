@@ -5,7 +5,7 @@ typedef int State[9];
 const int MAXSTATE=1000000;
 State st[MAXSTATE],goal;
 int dist[MAXSTATE];
-
+int fa[MAXSTATE];
 
 const int dx[]={-1,1,0,0};
 const int dy[]={0,0,-1,1};
@@ -69,7 +69,7 @@ int bfs()
                 t[newz]=s[z];
                 t[z]=s[newz];
                 dist[rear]=dist[front]+1;
-                if(try_to_insert(rear)) {rear++;}
+                if(try_to_insert(rear)) {fa[rear]=front;rear++;}
             }
         }
         front++;
@@ -84,7 +84,17 @@ int main()
     for(int i=0;i<9;i++) cin>>goal[i];
     int ans=bfs();
 //    cout<<ans<<endl;
-    if(ans>0) cout<<dist[ans]<<endl;
+    if(ans>0) {
+        cout<<dist[ans]<<endl;
+        int p=fa[ans];
+        while(p>1){
+            for(int i=0;i<9;i++){
+                cout<<st[p][i];
+            }
+            cout<<endl;
+            p=fa[p];
+        }
+    }
     else cout<<"-1"<<endl;
     return 0;
 }
