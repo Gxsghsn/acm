@@ -1,8 +1,8 @@
 #include<iostream>
 using namespace std;
 //int a[]={1,3,5,7,9,0,2,4,6,8};
-int a[]={1,3,2};
-int nn=3;
+int a[]={1,3,2,4};
+int nn=4;
 void combine(int left,int right)
 {
     cout<<"left & right :"<<left<<" "<<right<<endl;
@@ -17,21 +17,35 @@ void combine(int left,int right)
     int l[100]={0};
     int lp=0;
     int i=left,j=m;
+
     while(i<m||j<right){
-        cout<<"               ij"<<i<<j<<" leftright "<<left<<right<<endl;
-        if(j>=right || a[i]<a[j]){
-            l[lp++]=a[i++];
-        }
-        else{
-            l[lp++]=a[j++];
-        }
+        if((a[i]<a[j]&&i<m) || j>=right) l[lp++]=a[i++];
+        else l[lp++]=a[j++];
     }
 
-    for(int k=left;k<right;k++){cout<<a[k]<<"-";}
-    cout<<endl;
-    cout<<"****"<<lp<<endl;
-    for(int k=0;k<lp;k++){a[left+k]=l[k];cout<<l[k]<<" ";}
-    cout<<endl<<endl;
+    // while (i < m && j < right)
+    // {
+    //     l[lp++] = a[i] < a[j] ? a[i++] : a[j++];
+    // }
+    // while (i < m)
+    // {
+    //     l[lp++] = a[i++];
+    // }
+    // while (j < right)
+    // {
+    //     l[lp++] = a[j++];
+    // }
+
+    for (int ii = 0; ii < (right-left); ii++)
+    {
+        a[left+ii] = l[ii];
+    }
+
+    // for(int k=left;k<right;k++){cout<<a[k]<<"-";}
+    // cout<<endl;
+    // cout<<"****"<<lp<<endl;
+    // for(int k=0;k<lp;k++){a[left+k]=l[k];cout<<l[k]<<" ";}
+    // cout<<endl<<endl;
 }
 
 

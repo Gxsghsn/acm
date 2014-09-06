@@ -75,7 +75,7 @@ void bfs()
             }
         for(int i=1; i<=r; i++)
             if(room[t.room_num][i]&&t.light[i])
-            { 
+            {
                 score p=t;
                 p.light[r+1]=i;
                 p.room_num=i;
