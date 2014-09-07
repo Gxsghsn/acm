@@ -2,7 +2,7 @@
 #include <cstdio>
 using namespace std;
 
-int state[100][100];
+double state[100][100];
 int pstate=0;
 
 int main()
@@ -10,10 +10,11 @@ int main()
     freopen("10881.txt","r",stdin);
 	int w;
 	scanf("%d",&w);
+	int casenum=1;
 	while(w--){
         pstate=0;
-		int casenum=1;
-		int L,T,n;
+		int L,n;
+		double T;
 		cin>>L>>T>>n;
 		int m=n;
 		while(m--){
@@ -26,12 +27,14 @@ int main()
 			pstate++;
 		}
 
-		while(T--){
+		while(T>0){
+			T-=0.5;
 //			int flag=-1;
+			// cout<<"~"<<endl;
 			for(int i=0;i<n;i++){
-                int flag=0;
-				state[i][0]+=state[i][1];
-				flag=state[i][0];
+                // int flag=0;
+				state[i][0]+=0.5*state[i][1];
+				// flag=state[i][0];
 			}
 			for(int i=0;i<n;i++)
 				for(int j=i;j<n;j++)
@@ -39,6 +42,11 @@ int main()
 						state[i][1]*=-1;
 						state[j][1]*=-1;
 					}
+			// printf("\n");
+			// for(int i=0;i<n;i++){
+			// 	printf("**** %.2f %.0f\n",state[i][0],state[i][1]);
+			// }
+			// printf("%n");
 		}
 //
 //        for(int i=0;i<n;i++){
@@ -58,7 +66,7 @@ int main()
                 cout<<"Fell off"<<endl;
             else{
                 int a=0;
-                printf("%d ",state[i][0]);
+                printf("%.0f ",state[i][0]);
                 for(int j=0;j<n;j++){
                 	if(j==i) continue;
                     if(state[j][0]==state[i][0]){
