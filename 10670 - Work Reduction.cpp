@@ -1,11 +1,20 @@
 #include <iostream>
 #include <cstdio>
 #include <algorithm>
-#define test
+//#define test
 using namespace std;
 int cases;
 int N,M,L;
 int cost[16];
+
+struct agency
+{
+    int A,B,V;
+    char name[20];
+}gen[102];
+
+
+
 
 int mincost(int A,int B)
 {
@@ -23,15 +32,17 @@ int mincost(int A,int B)
             mincost+=(N1/2+0.5)*A;
         else mincost+=B;
         N1/=2;
-//        cout<<N1<<" "<<mincost<<endl;
     }
-//    cout<<"mincost:"<<mincost<<endl;
     return mincost;
 }
 
-int compare(int a,int b)
+bool comp(const agency &a,const agency &b)
 {
-    return cost[a]<cost[b];
+    if (a.V < b.V)
+        return true;
+    else if (a.V > b.V)
+        return false;
+    else return strcmp (a.name, b.name) < 0 ? true: false;
 }
 
 int main()
@@ -43,26 +54,18 @@ int main()
     int l=1;
     while(l<=cases){
         cin>>N>>M>>L;
-        char s[16];
-        char C;
-        int A,B;
-        int len=L;
-//        cout<<N<<M<<L;
-        while(len>0){
+        char s[50];
+        int len=0;
+        while(len<L){
             scanf("%s",&s);
-            sscanf(s,"%c:%d,%d",&C,&A,&B);
-//            cout<<(char)C<<A<<B<<endl;
-//            printf("%d,%d***\n",C,'A');
-//            cout<<":::::"<<(C-'A')<<":::::"<<'A'-(int)'A'<<endl;
-            cost[C-'A']=mincost(A,B);
-            len--;
+            sscanf(s,"%[^:]:%d,%d",gen[len].name,&gen[len].A,&gen[len].B);
+            gen[len].V=mincost(gen[len].A,gen[len].B);
+            len++;
         }
-        int b[16];
-        for(int i=0;i<16;i++) b[i]=i;
-        sort(b,b+L,compare);
+        sort(gen,gen+L,comp);
         printf("Case %d\n",l);
-        for(int i=0;i<L;i++)
-            printf("%c %d\n",b[i]+'A',cost[b[i]]);
+        for(int j=0;j<L;j++)
+            printf("%s %d\n",gen[j].name,gen[j].V);
         l++;
     }
 }
