@@ -1,8 +1,9 @@
 #include <iostream>
+//#include <windows.h>
 using namespace std;
 
 int main()
 {
-	cout<<"123"<<endl;
-	return 0;    
+	cout<<"hehe"<<endl;
+	return 0;
 }
