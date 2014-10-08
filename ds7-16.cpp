@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+//<<<<<<< HEAD
 #include<iostream>
 //#include<stack>
 using namespace std;
